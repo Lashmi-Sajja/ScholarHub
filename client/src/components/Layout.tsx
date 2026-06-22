@@ -13,7 +13,7 @@ export function Layout() {
   const { user, logout } = useAuth()
 
   return (
-    <div className="min-h-screen flex scanline" style={{ background: 'var(--bg-dark)' }}>
+    <div className="min-h-screen flex" style={{ background: 'var(--bg-dark)' }}>
       <aside className="w-64 flex flex-col" style={{ background: 'var(--bg-surface)', borderRight: '2px solid #2a2a4a' }}>
         <div className="p-5 border-b-2" style={{ borderColor: '#2a2a4a' }}>
           <h1 className="text-xs neon-text-cyan">SCHOLARHUB</h1>

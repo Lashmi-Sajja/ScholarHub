@@ -22,7 +22,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center scanline" style={{ background: 'var(--bg-dark)' }}>
+    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-dark)' }}>
       <div className="w-full max-w-sm px-4">
         <div className="text-center mb-8">
           <h1 className="text-lg neon-text-magenta mb-2">SCHOLARHUB</h1>
