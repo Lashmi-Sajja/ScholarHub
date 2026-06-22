@@ -22,29 +22,42 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-sm">
-        <h1 className="text-3xl font-bold text-center text-gray-900 mb-8">ScholarHub</h1>
-        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900">Create account</h2>
-          {error && <div className="text-sm text-red-600 bg-red-50 p-3 rounded-lg">{error}</div>}
+    <div className="min-h-screen flex items-center justify-center scanline" style={{ background: 'var(--bg-dark)' }}>
+      <div className="w-full max-w-sm px-4">
+        <div className="text-center mb-8">
+          <h1 className="text-lg neon-text-magenta mb-2">SCHOLARHUB</h1>
+          <div className="text-xs" style={{ color: 'var(--text-dim)' }}>REGISTRATION TERMINAL</div>
+        </div>
+        <form onSubmit={handleSubmit} className="card-retro p-6 space-y-5" style={{ borderColor: '#333' }}>
+          <h2 className="text-sm font-pixel" style={{ color: 'var(--neon-magenta)' }}>▸ CREATE ACCOUNT</h2>
+          {error && (
+            <div className="text-sm p-3 border-2 border-red-800 bg-red-950/30" style={{ color: '#ff6b6b' }}>
+              ! {error}
+            </div>
+          )}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <label className="block text-sm mb-1" style={{ color: 'var(--text-dim)' }}>NAME</label>
             <input type="text" required value={name} onChange={(e) => setName(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              className="input-retro w-full" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label className="block text-sm mb-1" style={{ color: 'var(--text-dim)' }}>EMAIL</label>
             <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              className="input-retro w-full" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <label className="block text-sm mb-1" style={{ color: 'var(--text-dim)' }}>PASSWORD</label>
             <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              className="input-retro w-full" />
           </div>
-          <button type="submit" className="w-full py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors">Register</button>
-          <p className="text-sm text-gray-500 text-center">Already have an account? <Link to="/login" className="text-indigo-600 hover:underline">Sign in</Link></p>
+          <button type="submit"
+            className="btn-retro w-full text-center"
+            style={{ background: 'var(--neon-magenta)', color: '#fff', borderColor: 'var(--neon-magenta)' }}>
+            REGISTER
+          </button>
+          <p className="text-xs text-center" style={{ color: 'var(--text-dim)' }}>
+            ALREADY IN? <Link to="/login" className="hover:underline" style={{ color: 'var(--neon-cyan)' }}>SIGN IN</Link>
+          </p>
         </form>
       </div>
     </div>

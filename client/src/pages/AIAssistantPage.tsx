@@ -22,30 +22,46 @@ export default function AIAssistantPage() {
   const latest = conversations?.[conversations.length - 1]
 
   return (
-    <div className="p-8 flex flex-col h-[calc(100vh-4rem)]">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">AI Academic Assistant</h1>
+    <div className="flex flex-col h-[calc(100vh-5rem)]">
+      <h1 className="text-sm neon-text-magenta mb-6 font-pixel">▸ AI ASSISTANT</h1>
 
-      <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-4 overflow-y-auto space-y-4">
+      <div className="flex-1 card-retro p-5 mb-4 overflow-y-auto space-y-4" style={{ borderColor: '#2a2a4a' }}>
         {latest?.messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[70%] p-3 rounded-xl text-sm ${
-              msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-900'
-            }`}>
+            <div className="max-w-[70%] p-3 text-sm" style={{
+              background: msg.role === 'user' ? 'rgba(0,255,242,0.1)' : 'rgba(255,0,255,0.08)',
+              border: '1px solid',
+              borderColor: msg.role === 'user' ? 'var(--neon-cyan)' : 'var(--neon-magenta)',
+              color: msg.role === 'user' ? 'var(--neon-cyan)' : 'var(--text-main)',
+            }}>
+              <div className="text-xs mb-1 opacity-60">
+                {msg.role === 'user' ? '> YOU' : '< AI'}
+              </div>
               {msg.content}
             </div>
           </div>
         ))}
-        {!latest && <p className="text-sm text-gray-400 text-center">Ask a question to get started.</p>}
-        {askMutation.isPending && <p className="text-sm text-gray-400 text-center">Thinking...</p>}
+        {!latest && (
+          <div className="text-center mt-16">
+            <div className="text-2xl mb-2" style={{ color: 'var(--neon-magenta)' }}>?</div>
+            <p className="text-sm" style={{ color: 'var(--text-dim)' }}>Ask me anything about your studies.</p>
+          </div>
+        )}
+        {askMutation.isPending && (
+          <div className="text-center">
+            <span className="text-sm animate-pulse" style={{ color: 'var(--neon-cyan)' }}>THINKING...</span>
+          </div>
+        )}
       </div>
 
       <form onSubmit={(e) => { e.preventDefault(); askMutation.mutate() }} className="flex gap-3">
         <input type="text" value={message} onChange={(e) => setMessage(e.target.value)}
-          placeholder="Ask a question about your studies..."
-          className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          placeholder="Type your question..."
+          className="input-retro flex-1" />
         <button type="submit" disabled={!message || askMutation.isPending}
-          className="px-6 py-2.5 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 disabled:opacity-50 transition-colors">
-          Send
+          className="btn-retro"
+          style={{ background: 'var(--neon-magenta)', color: '#fff', borderColor: 'var(--neon-magenta)' }}>
+          SEND
         </button>
       </form>
     </div>
